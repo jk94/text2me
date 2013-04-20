@@ -22,7 +22,7 @@ public class Control {
 		// "root", ""));
 
 		startServer();
-
+/*
 		System.out.println(ops.addUser(theDatabaseConnection, "abc",
 				"+491573478"));
 		ResultSet rs = ops.getUser(theDatabaseConnection, "00491234");
@@ -32,7 +32,7 @@ public class Control {
 		} catch (SQLException ex) {
 			Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null,
 					ex);
-		}
+		}*/
 	}
 
 	public final void startServer() {
