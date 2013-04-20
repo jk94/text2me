@@ -1,0 +1,44 @@
+SEND TEXT2MEPROTOCOL/1.0
+User: 00490123456789
+Password: 12345
+
+{
+	"Sender": "00490123456789",
+	"Receiver": "00491243233",
+	"Text": "Hallo Jan",
+	"Time": "Unix Timestamp"
+}
+
+GET TEXT2MEPROTOCOL/1.0
+User: 00490123456789
+Password: 12345
+
+{
+	"Sender": "00490123456789"
+}
+
+READ TEXT2MEPROTOCOL/1.0
+User: 00490123456789
+Password: 12345
+
+{
+	"Sender": "00490123456789",
+	"MessageID": "123"
+}
+
+
+
+--------------- SERVER ---------------
+
+DELIVER TEXT2MEPROTOCOL/1.0
+User: 00490123456789
+Password: 12345
+
+{
+	"Sender": "00490123456789",
+	"Text": "Hallo Jan",
+	"Time": "Unix Timestamp",
+	"MessageID": "123"
+}
+
+OK TEXT2MEPROTOCOL/1.0

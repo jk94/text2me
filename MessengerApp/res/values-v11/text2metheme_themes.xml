@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Text2MeTheme" parent="@style/AppTheme">
+        <item name="android:editTextBackground">@drawable/edit_text_holo_light</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewText2MeTheme</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/btn_check_holo_light</item>
+        <item name="android:listChoiceIndicatorSingle">@drawable/btn_radio_holo_light</item>
+        <item name="android:buttonStyle">@style/ButtonText2MeTheme</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonText2MeTheme</item>
+        <item name="android:dropDownSpinnerStyle">@style/SpinnerText2MeTheme</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarText2MeTheme</item>
+        <item name="android:seekBarStyle">@style/SeekBarText2MeTheme</item>
+        <item name="android:ratingBarStyle">@style/RatingBarText2MeTheme</item>
+        <item name="android:ratingBarStyleIndicator">@style/RatingBarBigText2MeTheme</item>
+        <item name="android:ratingBarStyleSmall">@style/RatingBarSmallText2MeTheme</item>
+        <item name="android:buttonStyleToggle">@style/ToggleText2MeTheme</item>
+        <item name="android:listChoiceBackgroundIndicator">@drawable/list_selector_holo_light</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/activated_background_holo_light</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/fastscroll_thumb_holo</item>
+    </style>
+
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/pref_title" >
+
+    <PreferenceScreen
+        android:icon="@drawable/ic_settings_notification"
+        android:key="pref_category_notification"
+        android:persistent="false"
+        android:title="@string/pref_title_notification" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_notification_activated"
+            android:summary="@string/pref_setting_notification_activated_sum"
+            android:title="@string/pref_setting_notification_activated_title" />
+
+        <RingtonePreference
+            android:dependency="pref_notification_activated"
+            android:key="pref_notification_ringtone"
+            android:ringtoneType="notification"
+            android:showDefault="true"
+            android:title="@string/pref_setting_notification_sound" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:dependency="pref_notification_activated"
+            android:entries="@array/pref_setting_notification_vibrate_entries"
+            android:entryValues="@array/pref_setting_notification_vibrate_entry_values"
+            android:key="pref_notification_vibrate_type"
+            android:summary="@string/pref_setting_notification_vibrate_sum"
+            android:title="@string/pref_setting_notification_vibrate_title" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/ic_settings_account"
+        android:key="pref_category_account"
+        android:persistent="false"
+        android:title="@string/pref_title_account" >
+        <EditTextPreference
+            android:key="pref_account_username"
+            android:title="@string/pref_setting_account_username_title" />
+        <EditTextPreference
+            android:key="pref_account_password"
+            android:title="@string/pref_setting_account_password_title" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/ic_settings_backup"
+        android:key="pref_category_backup"
+        android:persistent="false"
+        android:title="@string/pref_title_backup" >
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/ic_settings_help"
+        android:key="pref_category_help"
+        android:persistent="false"
+        android:title="@string/pref_title_help" >
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:icon="@drawable/ic_settings_about"
+        android:key="pref_category_about"
+        android:persistent="false"
+        android:title="@string/pref_title_about" >
+    </PreferenceScreen>
+
+</PreferenceScreen>

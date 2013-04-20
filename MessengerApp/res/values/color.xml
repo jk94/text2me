@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- <color name="message_recieved">#77CCCCCC</color> -->
+    <!-- <color name="message_send">#3d75fb</color> -->
+    <!-- <color name="message_send">#770099CC</color> -->
+
+    <color name="message_recieved">#77CCCCCC</color>
+    <color name="message_send">#FFFFBB33</color>
+
+</resources>

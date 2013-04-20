@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Text2Me</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="empty"></string>
+
+    <!-- MainActivity -->
+    <string name="mainactivity_empty">Keine Unterhaltungen vorhanden</string>
+    <string name="mainactivity_name">KontaktName</string>
+    <string name="mainactivity_text">Letzter Text</string>
+    <string name="mainactivity_time">15:09</string>
+    <string name="contactsactivity_status">der Status</string>
+    <string name="div_anything">irgendwas</string>
+
+    <!-- ConversationActivity -->
+    <string name="conversationactivity_empty">Keine Nachrichten vorhanden</string>
+    <string name="conversationactivity_senden">Senden</string>
+
+    <!-- ContactProfileActivity -->
+    <string name="profile_status">Status</string>
+    <string name="profile_number">Telefonnummer</string>
+    <string name="profile_last_online">Zuletzt Online</string>
+
+    <!-- Menu -->
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_refresh">Aktualisieren</string>
+    <string name="menu_contacts">Kontakte</string>
+    <string name="menu_profile_test">ProfileTest</string>
+
+    <!-- Time -->
+    <string name="time_oclock">Uhr</string>
+    <string name="time_yesterday">Gestern</string>
+
+    <string-array name="time_daysoftheweek">
+        <item>Sonntag</item>
+        <item>Montag</item>
+        <item>Dienstag</item>
+        <item>Mittwoch</item>
+        <item>Donnerstag</item>
+        <item>Freitag</item>
+        <item>Samstag</item>
+    </string-array>
+
+    <string name="contactactivity_empty">Keine Kontakte</string>
+    <string name="contactactivity_numbertype">mobil</string>
+    <string name="activity_show_contact_profil">Zeige Profil</string>
+
+    <!-- Settings -->
+    <string name="pref_title">Einstellungen</string>
+    <string name="pref_title_notification">Benachrichtigungen</string>
+    <string name="pref_title_account">Account</string>
+    <string name="pref_title_backup">Backup</string>
+    <string name="pref_title_help">Hilfe</string>
+    <string name="pref_title_about">Über</string>
+    <string name="pref_setting_notification_activated_title">Benachrichigungen aktiviert</string>
+    <string name="pref_setting_notification_activated_sum">Bei Nachrichteneingang wird eine Benachrichigungen gezeigt.</string>
+    <string name="pref_setting_notification_sound">Benachrichtigungston</string>
+    <string name="pref_setting_notification_vibrate_title">Vibration</string>
+    <string name="pref_setting_notification_vibrate_sum">Dauer des Vibrationsalarms</string>
+    <string name="pref_setting_account_username_title">Benutzername</string>
+    <string name="pref_setting_account_password_title">Passwort</string>
+
+    <string-array name="pref_setting_notification_vibrate_entries">
+        <item>Aus</item>
+        <item>Standard</item>
+        <item>Kurz</item>
+        <item>Lang</item>
+    </string-array>
+
+    <!-- Notification -->
+    <string name="notif_newMessage_ticker">Nachricht von</string>
+    <string name="notif_newMessages_ticker">Neue Nachrichten von</string>
+    <string name="notif_newMessagesFrom">Nachrichten von</string>
+    <string name="notif_newMessages">Nachrichten</string>
+    <string name="notif_newMessages_title">Neue Nachrichten</string>
+    <string name="notif_contacts">Kontakten</string>
+    <string name="notif_action_markasread">Als Gelesen markieren</string>
+    <string name="notif_action_answer">Antworten</string>
+
+</resources>

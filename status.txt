@@ -1,0 +1,5 @@
+Nachrichten Status:
+0 - nicht versendet
+1 - von Server empfangen
+2 - von Empfänger empfangen
+3 - gelesen

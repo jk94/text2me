@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/senden_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/conversationactivity_empty" />
+
+    <LinearLayout
+        android:id="@+id/messages_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/senden_layout"
+        android:layout_alignLeft="@android:id/list" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fastScrollEnabled="true"
+            android:stackFromBottom="true" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/senden_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ab_solid_shadow_holo"
+        android:gravity="bottom|right"
+        android:orientation="horizontal" >
+
+        <ScrollView
+            android:id="@+id/denden_scrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/senden_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textLongMessage|textCapSentences|textAutoCorrect|textMultiLine|textLongMessage" >
+            </EditText>
+        </ScrollView>
+
+        <ImageButton
+            android:id="@+id/senden_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@string/empty"
+            android:onClick="onClickSendenButton"
+            android:padding="4dp"
+            android:src="@drawable/ic_send" />
+    </LinearLayout>
+
+</RelativeLayout>
