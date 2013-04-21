@@ -1,7 +1,0 @@
-Jan:
-* ContactsActivity
-* ContactProfileActivity
-
-Daniel:
-* MainActivity
-* 
