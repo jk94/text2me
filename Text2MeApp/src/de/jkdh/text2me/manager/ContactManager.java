@@ -89,7 +89,7 @@ public class ContactManager {
 		ArrayList<ContactManager.PhoneContact> erg = new ArrayList<ContactManager.PhoneContact>();
 		
 		
-		final String[] GET_COLUMNS = {Contacts._ID, Contacts.DISPLAY_NAME};
+		final String[] GET_COLUMNS = {Contacts._ID, Contacts.DISPLAY_NAME,TAG};
 		
 		
 		ContentResolver contentResolver = context.getContentResolver();

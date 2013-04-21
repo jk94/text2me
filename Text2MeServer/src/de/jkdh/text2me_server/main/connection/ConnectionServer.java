@@ -39,8 +39,7 @@ public class ConnectionServer extends Thread {
                 log("Verbindung wurde von " + socket.getInetAddress()
                         + " hergestellt");
 
-                ConnectionThread client = new ConnectionThread(this,
-                        socket.getInputStream(), socket.getOutputStream());
+                ConnectionThread client = new ConnectionThread(socket);
                 client.start();
                 ConnectionThreads.add(client);
 
