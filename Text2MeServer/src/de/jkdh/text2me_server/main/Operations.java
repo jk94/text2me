@@ -17,7 +17,18 @@ public class Operations {
         }
         return dbc.executeSQLInsert(stmt);
     }
-
+    public int addMessage(DB_Connect dbc, int senderID, int empfaengerID, String text){
+       PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("INSERT INTO messenger.message (Sender_ID, Empfaenger_ID, Text) VALUES (?,?,?)");
+            stmt.setInt(1, senderID);
+            stmt.setInt(2, empfaengerID);
+            stmt.setString(3, text);
+            System.out.println(stmt.toString());
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt); 
+    }
     //+++++++++++++++++++++++++++++++++++++++++++++
     public ResultSet getUser(DB_Connect dbc, String number, String[] column, String[] columncontainment) {
         PreparedStatement stmt = null;
@@ -78,7 +89,6 @@ public class Operations {
         }
         return dbc.executeSQLQuery(stmt);
     }
-
     public ResultSet getMessageByEmpfaengerID(DB_Connect dbc, int empfaengerID) {
         PreparedStatement stmt = null;
         try {
@@ -87,5 +97,17 @@ public class Operations {
         } catch (SQLException ex) {
         }
         return dbc.executeSQLQuery(stmt);
+    }
+    
+    public int getMessageStatus(DB_Connect dbc, int messageID){
+        int erg = -1;
+        ResultSet rs = getMessageByID(dbc, messageID);
+        try {
+            rs.first();
+            erg = rs.getInt("Status");
+            System.out.println(erg);
+        } catch (SQLException ex) {
+        }
+        return erg;
     }
 }

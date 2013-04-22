@@ -28,6 +28,7 @@ public class Control {
             System.out.println(rs.getString("Telefon"));
         } catch (SQLException ex) {
         }
+        ops.getMessageStatus(theDatabaseConnection, 1);
     }
 
     public final void startServer() {
