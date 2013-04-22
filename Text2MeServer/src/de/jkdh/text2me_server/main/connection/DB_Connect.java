@@ -49,12 +49,22 @@ public class DB_Connect {
         return erg;
     }
 
-    public int executeSQLInsert(String command) {
+    public ResultSet executeSQLQuery(PreparedStatement stmt) {
+        ResultSet erg = null;
+
+        try {
+            erg = stmt.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return erg;
+    }
+
+    public int executeSQLInsert(PreparedStatement pstmt) {
         int erg = -1;
 
         try {
-            Statement stm = this.theConnection.createStatement();
-            erg = stm.executeUpdate(command);
+            erg = pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
             erg = -1;
