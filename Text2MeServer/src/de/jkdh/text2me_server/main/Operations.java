@@ -4,6 +4,7 @@ import de.jkdh.text2me_server.main.connection.DB_Connect;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Operations {
 
@@ -18,7 +19,8 @@ public class Operations {
         }
         return dbc.executeSQLInsert(stmt);
     }
-        public int addUser(DB_Connect dbc, int id, String password, String number) {
+
+    public int addUser(DB_Connect dbc, int id, String password, String number) {
         PreparedStatement stmt = null;
         try {
             stmt = dbc.getTheConnection().prepareStatement("INSERT INTO messenger.user (U_ID, Telefon, Password) VALUES (?,?,?)");
@@ -37,7 +39,7 @@ public class Operations {
             stmt.setInt(1, senderID);
             stmt.setInt(2, empfaengerID);
             stmt.setString(3, text);
-            System.out.println(stmt.toString());
+
         } catch (SQLException ex) {
         }
         return dbc.executeSQLInsert(stmt);
@@ -49,7 +51,18 @@ public class Operations {
             stmt = dbc.getTheConnection().prepareStatement("UPDATE message SET Status = ? WHERE M_ID = ?");
             stmt.setInt(1, neuerStatus);
             stmt.setInt(2, id);
-            System.out.println(stmt.toString());
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt);
+    }
+
+    public int updateLastOnline(DB_Connect dbc, int userID) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("UPDATE user SET LastOnline = ? WHERE U_ID = ?");
+            java.util.Date theDate = new java.util.Date();
+            stmt.setTimestamp(1, new Timestamp(theDate.getTime()));
+            stmt.setInt(2, userID);
         } catch (SQLException ex) {
         }
         return dbc.executeSQLInsert(stmt);
@@ -133,7 +146,6 @@ public class Operations {
         try {
             rs.first();
             erg = rs.getInt("Status");
-            System.out.println(erg);
         } catch (SQLException ex) {
         }
         return erg;

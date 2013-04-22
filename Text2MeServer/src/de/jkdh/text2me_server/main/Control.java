@@ -15,23 +15,24 @@ public class Control {
     public Control(int port) {
         this.port = port;
         this.ops = new Operations();
-        // this.setDB_Connection(new DB_Connect("localhost", "messenger",
-        // "root", ""));
 
         startServer();
 
-        System.out.println(ops.addUser(theDatabaseConnection, "abc",
-                "+491573478"));
-        System.out.println(ops.removeUser(theDatabaseConnection, 7));
+        ops.addUser(theDatabaseConnection, 7, "abc", "+491573488");
+
+        ops.removeUser(theDatabaseConnection, 7);
+
         ResultSet rs = ops.getUser(theDatabaseConnection, "00491234");
         try {
             rs.first();
-            System.out.println(rs.getString("Telefon"));
+            System.out.println("GetUser: " + rs.getString("Telefon"));
         } catch (SQLException ex) {
         }
+
         ops.getMessageStatus(theDatabaseConnection, 1);
         ops.setMessageStatus(theDatabaseConnection, 1, Konstanten.STATUS_GESENDET_ID);
         ops.addMessage(theDatabaseConnection, 2, 1, "Hallihallo ^^ ich teste die SQLInjection'; DROP DATABASE messenger;");
+        ops.updateLastOnline(theDatabaseConnection, 2);
     }
 
     public final void startServer() {
