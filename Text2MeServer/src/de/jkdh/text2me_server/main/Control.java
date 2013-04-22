@@ -22,6 +22,7 @@ public class Control {
 
         System.out.println(ops.addUser(theDatabaseConnection, "abc",
                 "+491573478"));
+        System.out.println(ops.removeUser(theDatabaseConnection, 7));
         ResultSet rs = ops.getUser(theDatabaseConnection, "00491234");
         try {
             rs.first();
@@ -29,6 +30,8 @@ public class Control {
         } catch (SQLException ex) {
         }
         ops.getMessageStatus(theDatabaseConnection, 1);
+        ops.setMessageStatus(theDatabaseConnection, 1, Konstanten.STATUS_GESENDET_ID);
+        ops.addMessage(theDatabaseConnection, 2, 1, "Hallihallo ^^ ich teste die SQLInjection'; DROP DATABASE messenger;");
     }
 
     public final void startServer() {

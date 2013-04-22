@@ -3,11 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 07. April 2013 um 00:02
+-- Erstellungszeit: 22. April 2013 um 19:40
 -- Server Version: 5.1.37
 -- PHP-Version: 5.3.0
 --
--- Version 1.2
+-- Version 1.3
 --
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `Empfaenger_ID` int(11) NOT NULL,
   `Text` text NOT NULL,
   `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `Status` int(11) NOT NULL,
+  `Status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`M_ID`),
   KEY `Sender_ID` (`Sender_ID`),
   KEY `Empfaenger_ID` (`Empfaenger_ID`)
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `LastOnline` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`U_ID`),
   UNIQUE KEY `Telefon` (`Telefon`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Daten für Tabelle `user`
@@ -75,5 +75,5 @@ INSERT INTO `user` (`U_ID`, `Telefon`, `Password`, `LastOnline`) VALUES
 -- Constraints der Tabelle `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`Empfaenger_ID`) REFERENCES `user` (`U_ID`),
-  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`Sender_ID`) REFERENCES `user` (`U_ID`);
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`Sender_ID`) REFERENCES `user` (`U_ID`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`Empfaenger_ID`) REFERENCES `user` (`U_ID`);

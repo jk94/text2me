@@ -9,6 +9,9 @@ package de.jkdh.text2me_server.main;
  * @author Admin
  */
 public class Konstanten {
+    public final static String STATUS_NICHTVERSENDET = "nicht versendet";
+    public final static int STATUS_NICHTVERSENDET_ID = 0;
+    
     public final static String STATUS_GESENDET = "gesendet";
     public final static int STATUS_GESENDET_ID = 1;
     

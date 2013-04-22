@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class Operations {
 
+    // TODO SETTER/ADDER
     public int addUser(DB_Connect dbc, String password, String number) {
         PreparedStatement stmt = null;
         try {
@@ -17,8 +18,20 @@ public class Operations {
         }
         return dbc.executeSQLInsert(stmt);
     }
-    public int addMessage(DB_Connect dbc, int senderID, int empfaengerID, String text){
-       PreparedStatement stmt = null;
+        public int addUser(DB_Connect dbc, int id, String password, String number) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("INSERT INTO messenger.user (U_ID, Telefon, Password) VALUES (?,?,?)");
+            stmt.setInt(1, id);
+            stmt.setString(2, number);
+            stmt.setString(3, password);
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt);
+    }
+
+    public int addMessage(DB_Connect dbc, int senderID, int empfaengerID, String text) {
+        PreparedStatement stmt = null;
         try {
             stmt = dbc.getTheConnection().prepareStatement("INSERT INTO messenger.message (Sender_ID, Empfaenger_ID, Text) VALUES (?,?,?)");
             stmt.setInt(1, senderID);
@@ -27,21 +40,35 @@ public class Operations {
             System.out.println(stmt.toString());
         } catch (SQLException ex) {
         }
-        return dbc.executeSQLInsert(stmt); 
+        return dbc.executeSQLInsert(stmt);
+    }
+
+    public int setMessageStatus(DB_Connect dbc, int id, int neuerStatus) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("UPDATE message SET Status = ? WHERE M_ID = ?");
+            stmt.setInt(1, neuerStatus);
+            stmt.setInt(2, id);
+            System.out.println(stmt.toString());
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt);
     }
     //+++++++++++++++++++++++++++++++++++++++++++++
+
+    // TODO Getter
     public ResultSet getUser(DB_Connect dbc, String number, String[] column, String[] columncontainment) {
         PreparedStatement stmt = null;
         try {
             String appending = "";
-            if(column.length == columncontainment.length){
-                for(int i=0;i<column.length;i++){
-                //String srtg = columncontainment[i].replaceAll(";", "");
-                appending = appending + " AND ";
-                appending = appending + column[i] + " = \'" + columncontainment[i] + "\'";
+            if (column.length == columncontainment.length) {
+                for (int i = 0; i < column.length; i++) {
+                    //String srtg = columncontainment[i].replaceAll(";", "");
+                    appending = appending + " AND ";
+                    appending = appending + column[i] + " = \'" + columncontainment[i] + "\'";
                 }
             }
-            
+
             stmt = dbc.getTheConnection().prepareStatement("SELECT * FROM messenger.user WHERE Telefon = ?");
             stmt.setString(1, number);
         } catch (SQLException ex) {
@@ -89,6 +116,7 @@ public class Operations {
         }
         return dbc.executeSQLQuery(stmt);
     }
+
     public ResultSet getMessageByEmpfaengerID(DB_Connect dbc, int empfaengerID) {
         PreparedStatement stmt = null;
         try {
@@ -98,8 +126,8 @@ public class Operations {
         }
         return dbc.executeSQLQuery(stmt);
     }
-    
-    public int getMessageStatus(DB_Connect dbc, int messageID){
+
+    public int getMessageStatus(DB_Connect dbc, int messageID) {
         int erg = -1;
         ResultSet rs = getMessageByID(dbc, messageID);
         try {
@@ -108,6 +136,19 @@ public class Operations {
             System.out.println(erg);
         } catch (SQLException ex) {
         }
+        return erg;
+    }
+
+    // TODO DELETER
+    public int removeUser(DB_Connect dbc, int id) {
+        int erg = -1;
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("DELETE FROM messenger.user WHERE U_ID = ?");
+            stmt.setInt(1, id);
+        } catch (SQLException ex) {
+        }
+        dbc.executeSQLInsert(stmt);
         return erg;
     }
 }
