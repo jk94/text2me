@@ -20,15 +20,16 @@ public class ContactManager {
 	private ArrayList<Contact> ContactsList;
 	private Context context;
 
-	
 	class PhoneContact {
-		
+
 		int contactID;
-		String forename, surname, shownname; 
+		String forename, surname, shownname;
 		List<ArrayList<String>> number;
 		Bitmap contactPicture;
-		
-		public PhoneContact (int contactID, String forename, String surname, String shownname, List<ArrayList<String>> number, Bitmap contactPicture) {
+
+		public PhoneContact(int contactID, String forename, String surname,
+				String shownname, List<ArrayList<String>> number,
+				Bitmap contactPicture) {
 			this.contactID = contactID;
 			this.forename = forename;
 			this.surname = surname;
@@ -36,87 +37,96 @@ public class ContactManager {
 			this.number = number;
 			this.contactPicture = contactPicture;
 		}
-		public int getContactID(){
+
+		public int getContactID() {
 			return contactID;
 		}
-		public String getForename(){
+
+		public String getForename() {
 			return forename;
 		}
+
 		public String getSurname() {
 			return surname;
 		}
+
 		public String getShownname() {
 			return shownname;
 		}
+
 		public List<ArrayList<String>> getNumber() {
 			return number;
 		}
-		public ArrayList<String> getNumber(int index){
-			if(index < number.size()){
-			return number.get(index);
-			}else{
+
+		public ArrayList<String> getNumber(int index) {
+			if (index < number.size()) {
+				return number.get(index);
+			} else {
 				return null;
 			}
 		}
+
 		public Bitmap getContactPicture() {
 			return contactPicture;
 		}
+
 		public void setContactID(int contactID) {
 			this.contactID = contactID;
 		}
+
 		public void setForename(String forename) {
 			this.forename = forename;
 		}
+
 		public void setSurname(String surname) {
 			this.surname = surname;
 		}
+
 		public void setShownname(String shownname) {
 			this.shownname = shownname;
 		}
+
 		public void setNumber(List<ArrayList<String>> number) {
 			this.number = number;
 		}
+
 		public void setContactPicture(Bitmap contactPicture) {
 			this.contactPicture = contactPicture;
 		}
-		
-		
-		
-		
+
 	}
-	
-	public ArrayList<PhoneContact> getPhoneContacts(){
+
+	public ArrayList<PhoneContact> getPhoneContacts() {
 		ArrayList<ContactManager.PhoneContact> erg = new ArrayList<ContactManager.PhoneContact>();
-		
-		
-		final String[] GET_COLUMNS = {Contacts._ID, Contacts.DISPLAY_NAME,TAG};
-		
-		
+
+		final String[] GET_COLUMNS = { Contacts._ID, Contacts.DISPLAY_NAME, TAG };
+
 		ContentResolver contentResolver = context.getContentResolver();
-		
+
 		String Selection = ContactsContract.Contacts.HAS_PHONE_NUMBER + " = ?";
 
 		String[] SelectionArgs = new String[] { "1" };
 
 		Cursor mainQueryCursor = contentResolver.query(
-				ContactsContract.Contacts.CONTENT_URI, GET_COLUMNS,
-				Selection, SelectionArgs, null);
+				ContactsContract.Contacts.CONTENT_URI, GET_COLUMNS, Selection,
+				SelectionArgs, null);
 
 		while (mainQueryCursor.moveToNext()) {
 			String contactId = mainQueryCursor.getString(0);
 			String displayName = mainQueryCursor.getString(1);
 
-			erg.add(new PhoneContact(Integer.parseInt(contactId), "", "", displayName, null, null));
+			erg.add(new PhoneContact(Integer.parseInt(contactId), "", "",
+					displayName, null, null));
 
-			log("===> " + erg.get(erg.size()-1).getShownname() + " (" + erg.get(erg.size() - 1).getContactID() + ")");
+			log("===> " + erg.get(erg.size() - 1).getShownname() + " ("
+					+ erg.get(erg.size() - 1).getContactID() + ")");
 		}
 
 		mainQueryCursor.close();
-				
+
 		return erg;
 	}
-	
-	
+
 	public ContactManager(Control theControl, Context context) {
 		this.ContactsList = new ArrayList<Contact>();
 		this.theControl = theControl;
@@ -226,17 +236,14 @@ public class ContactManager {
 		// Connection conn = this.theControl.getConnection();
 		beispielwerte bspwert = new beispielwerte();
 		bspwert.create(ContactsList);
-		
-		//GROOOOßER DENKFEHLER MEINERSEITS!! °.°
-		/*for (int i = 0; i < PhoneContactIDs.size(); i++) {
-			if (ContactsList != null) {
-				if (bspwert.istT2MNummer() {
 
-				} else {
-					PhoneContactIDs.remove(i);
-				}
-			}
-		}*/
+		// GROOOOßER DENKFEHLER MEINERSEITS!! °.°
+		/*
+		 * for (int i = 0; i < PhoneContactIDs.size(); i++) { if (ContactsList
+		 * != null) { if (bspwert.istT2MNummer() {
+		 * 
+		 * } else { PhoneContactIDs.remove(i); } } }
+		 */
 		log("-- Übrige Kontakte --");
 		for (int i = 0; i < PhoneContactIDs.size(); i++) {
 			log("" + PhoneContactIDs.get(i));
@@ -245,7 +252,7 @@ public class ContactManager {
 	}
 
 	private void log(String s) {
-		Log.d(TAG, s);
+		// Log.d(TAG, s);
 	}
 
 }

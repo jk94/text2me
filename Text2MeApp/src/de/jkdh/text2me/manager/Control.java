@@ -37,7 +37,6 @@ public class Control {
 		conversations = database.getConversations(this);
 
 		connection = new Connection("text2me", 2729);
-		connection.execute();
 
 	}
 
