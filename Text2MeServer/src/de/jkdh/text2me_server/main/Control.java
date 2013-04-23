@@ -1,7 +1,12 @@
 package de.jkdh.text2me_server.main;
 
+import de.jkdh.text2me_server.main.operations.Operations;
 import de.jkdh.text2me_server.main.connection.ConnectionServer;
 import de.jkdh.text2me_server.main.connection.DB_Connect;
+import de.jkdh.text2me_server.main.operations.Adder_Operations;
+import de.jkdh.text2me_server.main.operations.Deleter_Operations;
+import de.jkdh.text2me_server.main.operations.Getter_Operations;
+import de.jkdh.text2me_server.main.operations.Setter_Operations;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,21 +23,21 @@ public class Control {
 
         startServer();
 
-        ops.addUser(theDatabaseConnection, 7, "abc", "+491573488");
+        Adder_Operations.addUser(theDatabaseConnection, 7, "abc", "+491573488");
 
-        ops.removeUser(theDatabaseConnection, 7);
+        Deleter_Operations.removeUser(theDatabaseConnection, 7);
 
-        ResultSet rs = ops.getUser(theDatabaseConnection, "00491234");
+        ResultSet rs = Getter_Operations.getUser(theDatabaseConnection, "00491234");
         try {
             rs.first();
             System.out.println("GetUser: " + rs.getString("Telefon"));
         } catch (SQLException ex) {
         }
 
-        ops.getMessageStatus(theDatabaseConnection, 1);
-        ops.setMessageStatus(theDatabaseConnection, 1, Konstanten.STATUS_GESENDET_ID);
-        ops.addMessage(theDatabaseConnection, 2, 1, "Hallihallo ^^ ich teste die SQLInjection'; DROP DATABASE messenger;");
-        ops.updateLastOnline(theDatabaseConnection, 2);
+        Getter_Operations.getMessageStatus(theDatabaseConnection, 1);
+        Setter_Operations.setMessageStatus(theDatabaseConnection, 1, Konstanten.STATUS_GESENDET_ID);
+        Adder_Operations.addMessage(theDatabaseConnection, 2, 1, "Hallihallo ^^ ich teste die SQLInjection'; DROP DATABASE messenger;");
+        Setter_Operations.updateLastOnline(theDatabaseConnection, 2);
     }
 
     public final void startServer() {
