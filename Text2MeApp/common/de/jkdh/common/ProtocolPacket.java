@@ -1,7 +1,6 @@
 package de.jkdh.common;
 
 import java.io.BufferedReader;
-import java.net.Socket;
 
 public class ProtocolPacket {
 	private int contenttype;

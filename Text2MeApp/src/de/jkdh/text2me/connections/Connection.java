@@ -114,9 +114,8 @@ public class Connection {
 
 				if (socket.isConnected()) {
 					new Reader().execute();
-					// waitinglist.execute();
+					waitinglist.execute();
 				}
-				System.out.println(socket.isConnected());
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -130,13 +129,12 @@ public class Connection {
 
 		@Override
 		protected Long doInBackground(URL... params) {
-			while (!socket.isClosed()) {
+			while (socket.isConnected()) {
 				new ProtocolPacket(in);
-				System.out.println(222);
+				System.out.println("new ProtocolPacket");
 			}
 			return null;
 		}
-
 	}
 
 }
