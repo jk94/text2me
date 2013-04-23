@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author Admin
+ * @author Jan
  */
 public class Setter_Operations {
     

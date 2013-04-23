@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Admin
+ * @author Jan
  */
 public class Getter_Operations {
     

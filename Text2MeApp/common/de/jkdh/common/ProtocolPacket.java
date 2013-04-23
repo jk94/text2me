@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.net.Socket;
 
 public class ProtocolPacket {
-	private int type;
+	private int contenttype;
 	private String user;
 	private String password;
 	private String message_type;
@@ -13,7 +13,7 @@ public class ProtocolPacket {
 
 	public ProtocolPacket(int type, String user, String password,
 			String message_type) {
-		this.type = type;
+		this.contenttype = type;
 		this.user = user;
 		this.password = password;
 		this.message_type = message_type;
@@ -30,10 +30,10 @@ public class ProtocolPacket {
 			if (s.endsWith(ProtocolHelper.PROTOCOL_NAME + "/"
 					+ ProtocolHelper.PROTOCOL_VERSION)) {
 
-				type = ProtocolHelper.getTypeIntByString(s.substring(0,
+				contenttype = ProtocolHelper.getTypeIntByString(s.substring(0,
 						s.indexOf(" ")));
 
-				if (type >= 0 && type <= ProtocolHelper.TYPES.length) {
+				if (contenttype >= 0 && contenttype <= ProtocolHelper.CONTENT_TYPES.length) {
 
 					while (!(s = reader.readLine()).trim().equals("")) {
 						s = s.trim();
@@ -64,12 +64,12 @@ public class ProtocolPacket {
 		}
 	}
 
-	public int getType() {
-		return type;
+	public int getContentType() {
+		return contenttype;
 	}
 
-	public void setType(int type) {
-		this.type = type;
+	public void setContentType(int type) {
+		this.contenttype = type;
 	}
 
 	public String getUser() {
@@ -111,7 +111,7 @@ public class ProtocolPacket {
 	public String getPacket() {
 		String s = "";
 
-		s += ProtocolHelper.getHeader(type, user, password);
+		s += ProtocolHelper.getHeader(contenttype, user, password);
 		s += message;
 		s += "\n\n";
 

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Admin
+ * @author Jan
  */
 public class Deleter_Operations {
     

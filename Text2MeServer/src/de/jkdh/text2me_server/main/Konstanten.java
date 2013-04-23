@@ -6,7 +6,7 @@ package de.jkdh.text2me_server.main;
 
 /**
  *
- * @author Admin
+ * @author Jan
  */
 public class Konstanten {
     public final static String STATUS_NICHTVERSENDET = "nicht versendet";
