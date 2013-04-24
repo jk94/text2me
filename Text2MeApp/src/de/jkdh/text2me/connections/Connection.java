@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import android.os.AsyncTask;
 import de.jkdh.common.ProtocolHelper;
 import de.jkdh.common.ProtocolPacket;
-import de.jkdh.text2me.contact.Contact;
 import de.jkdh.text2me.message.Message;
 
 public class Connection {
@@ -45,7 +44,7 @@ public class Connection {
 
 	public void sendMessage(Message message) {
 		ProtocolPacket p = new ProtocolPacket(ProtocolHelper.TYPE_SEND, "user",
-				"password", ProtocolHelper.MESSAGE_TYPE_JSON);
+				"password", ProtocolHelper.CONTENT_TYPE_JSON);
 
 		String[] name = { ProtocolHelper.ITEM_SENDER,
 				ProtocolHelper.ITEM_RECEIVER, ProtocolHelper.ITEM_TEXT,
@@ -58,19 +57,16 @@ public class Connection {
 		waitinglist.execute();
 	}
 
-	public void checkContact(Contact contact) {
-		// String protocol = "";
-		// protocol = "/CONTACTEXIST MESSENGERAPPPROTOCOL/1.0\n";
-		// protocol = protocol + "";
-		// {
-		// "Sender": "00490123456789",
-		// "Receiver": "00491243233",
-		// "Text": "Hallo Jan",
-		// "Time": "Unix Timestamp"
-		// }"
-		// out.append(protocol + "\n");
-		// System.out.println(protocol);
-		// out.flush();
+	public void checkContact(String number) {
+		ProtocolPacket p = new ProtocolPacket(ProtocolHelper.TYPE_CHECKCONTACT,
+				"user", "password", ProtocolHelper.CONTENT_TYPE_JSON);
+
+		String[] name = { ProtocolHelper.ITEM_CONTACT };
+		String[] content = { number };
+		p.setMessage(ProtocolHelper.getBody(name, content));
+
+		waitinglist.add(p);
+		waitinglist.execute();
 	}
 
 	public class WaitingList {

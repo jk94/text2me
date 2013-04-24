@@ -32,7 +32,8 @@ public class ProtocolPacket {
 				contenttype = ProtocolHelper.getTypeIntByString(s.substring(0,
 						s.indexOf(" ")));
 
-				if (contenttype >= 0 && contenttype <= ProtocolHelper.CONTENT_TYPES.length) {
+				if (contenttype >= 0
+						&& contenttype <= ProtocolHelper.TYPES.length) {
 
 					while (!(s = reader.readLine()).trim().equals("")) {
 						s = s.trim();
