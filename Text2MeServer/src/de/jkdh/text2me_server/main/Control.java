@@ -27,12 +27,8 @@ public class Control {
 
         Deleter_Operations.removeUser(theDatabaseConnection, 7);
 
-        ResultSet rs = Getter_Operations.getUser(theDatabaseConnection, "00491234");
-        try {
-            rs.first();
-            System.out.println("GetUser: " + rs.getString("Telefon"));
-        } catch (SQLException ex) {
-        }
+        System.out.println("GetUser: " + Getter_Operations.getUser(theDatabaseConnection, "004954321").getTelnr());
+
 
         Getter_Operations.getMessageStatus(theDatabaseConnection, 1);
         Setter_Operations.setMessageStatus(theDatabaseConnection, 1, Konstanten.STATUS_GESENDET_ID);

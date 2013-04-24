@@ -16,8 +16,9 @@ public class DBuser {
     private String telnr, password;
     private Timestamp time;
 
-    public DBuser(int userID, String password, Timestamp time) {
+    public DBuser(int userID, String telnr, String password, Timestamp time) {
         this.userID = userID;
+        this.telnr = telnr;
         this.password = password;
         this.time = time;
     }
