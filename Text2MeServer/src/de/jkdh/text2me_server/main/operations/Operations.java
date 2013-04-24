@@ -9,20 +9,18 @@ public class Operations {
 
     public static void runOperationSequenz(DB_Connect dbc, ProtocolPacket pp){
         switch(pp.getContentType()){
-            case ProtocolHelper.CONTENT_TYPE_SEND:
-                
-                
+            case ProtocolHelper.TYPE_SEND:
                 
                break;
-            case ProtocolHelper.CONTENT_TYPE_GET:
+            case ProtocolHelper.TYPE_GET:
                 break;
-            case ProtocolHelper.CONTENT_TYPE_READ:
+            case ProtocolHelper.TYPE_READ:
                 Setter_Operations.setMessageStatus(dbc, 1, Konstanten.STATUS_GELESEN_ID);
                 
                 break;
-            case ProtocolHelper.CONTENT_TYPE_DELIVER:
+            case ProtocolHelper.TYPE_DELIVER:
                 break;
-            case ProtocolHelper.CONTENT_TYPE_OK:
+            case ProtocolHelper.TYPE_OK:
                 break;
         }
     }

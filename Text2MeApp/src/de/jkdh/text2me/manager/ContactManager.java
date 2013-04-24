@@ -16,6 +16,7 @@ import de.jkdh.text2me.contact.Contact;
 import de.jkdh.text2me.div.beispielwerte;
 
 public class ContactManager {
+	private static final String TAG = ContactManager.class.getSimpleName();
 	private Control theControl;
 	private ArrayList<Contact> ContactsList;
 	private Context context;
@@ -147,16 +148,6 @@ public class ContactManager {
 		return contact;
 	}
 
-	private Contact makeContact(int phoneID, String name, String number,
-			String status, String numtype) {
-		Contact erg = new Contact(-1, phoneID, name, number, status, numtype);
-		return erg;
-	}
-
-	public void exeIT() {
-		removeNotOnlineregisteredContacts(getPhoneContactIDs());
-	}
-
 	public Contact getContactByPhoneID(int phoneID) {
 		Contact con = null;
 
@@ -166,40 +157,6 @@ public class ContactManager {
 			}
 		}
 		return con;
-	}
-
-	private static final String TAG = ContactManager.class.getSimpleName();
-
-	public ArrayList<Integer> getPhoneContactIDs() {
-		ArrayList<Integer> erg = new ArrayList<Integer>();
-
-		ContentResolver contentResolver = context.getContentResolver();
-		// IDs und Namen aller sichtbaren Kontakte ermitteln
-		String[] mainQueryProjection = { ContactsContract.Contacts._ID,
-				ContactsContract.Contacts.DISPLAY_NAME };
-
-		String mainQuerySelection = ContactsContract.Contacts.HAS_PHONE_NUMBER
-				+ " = ?";
-
-		String[] mainQuerySelectionArgs = new String[] { "1" };
-
-		Cursor mainQueryCursor = contentResolver.query(
-				ContactsContract.Contacts.CONTENT_URI, mainQueryProjection,
-				mainQuerySelection, mainQuerySelectionArgs, null);
-
-		// Trefferliste abarbeiten ...
-
-		while (mainQueryCursor.moveToNext()) {
-			String contactId = mainQueryCursor.getString(0);
-			String displayName = mainQueryCursor.getString(1);
-
-			erg.add(Integer.parseInt(contactId));
-
-			log("===> " + displayName + " (" + contactId + ")");
-		}
-
-		mainQueryCursor.close();
-		return erg;
 	}
 
 	public void removeNotPhonesavedContactsFromDB(

@@ -5,6 +5,7 @@
 package de.jkdh.text2me_server.main.operations;
 
 import de.jkdh.text2me_server.main.connection.DB_Connect;
+import de.jkdh.text2me_server.main.dbdata.DBuser;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +19,19 @@ public class Getter_Operations {
     
         public static ResultSet getUser(DB_Connect dbc, String number) {
         PreparedStatement stmt = null;
+        DBuser dbu;
         try {
             stmt = dbc.getTheConnection().prepareStatement("SELECT * FROM messenger.user WHERE Telefon = ?");
             stmt.setString(1, number);
+            
+            ResultSet erg = dbc.executeSQLQuery(stmt);
+            
+            if(erg!=null){
+                erg.first();
+                dbu = new DBuser(erg.getInt("U_ID"), erg.getString("Telefon") , erg.getTimestamp("LastOnline"));
+            }
+            
+            
         } catch (SQLException ex) {
         }
         return dbc.executeSQLQuery(stmt);

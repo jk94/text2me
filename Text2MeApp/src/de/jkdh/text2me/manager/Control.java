@@ -26,10 +26,6 @@ public class Control {
 		database = new DB_Connect(context);
 
 		CManager = new ContactManager(this, context);
-		Log.d("Control", "CM erstellt");
-		CManager.getPhoneContactIDs();
-		CManager.exeIT();
-		Log.d("Control", "CM ReadContacts");
 
 		uis = new ArrayList<UI>();
 
