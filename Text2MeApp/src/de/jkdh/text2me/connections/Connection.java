@@ -125,9 +125,8 @@ public class Connection {
 
 		@Override
 		protected Long doInBackground(URL... params) {
-			while (socket.isConnected()) {
-				new ProtocolPacket(in);
-				System.out.println("new ProtocolPacket");
+			while (!socket.isClosed()) {
+				new ProtocolPacket(socket, in);
 			}
 			return null;
 		}

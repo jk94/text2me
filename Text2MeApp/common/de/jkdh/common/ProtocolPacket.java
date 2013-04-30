@@ -1,6 +1,8 @@
 package de.jkdh.common;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.Socket;
 
 public class ProtocolPacket {
 	private int contenttype;
@@ -19,7 +21,7 @@ public class ProtocolPacket {
 		this.valid = true;
 	}
 
-	public ProtocolPacket(BufferedReader reader) {
+	public ProtocolPacket(Socket socket, BufferedReader reader) {
 		try {
 			String s;
 
@@ -61,6 +63,11 @@ public class ProtocolPacket {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			try {
+				socket.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 
