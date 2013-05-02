@@ -1,12 +1,14 @@
 package de.jkdh.text2me_server.main.connection;
 
+import Listener.ValidListener;
+import de.jkdh.common.ProtocolPacket;
+import de.jkdh.text2me_server.main.main;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import sun.applet.Main;
 
 public class ConnectionThread extends Thread {
 
@@ -40,7 +42,10 @@ public class ConnectionThread extends Thread {
         try {
             String s = "";
             while ((s = reader.readLine()) != null) {
-                System.out.println(user.getInetAddress().getHostAddress() + ": " + s);
+                
+                new ValidListener(main.getControl().getDB_Connection(), new ProtocolPacket(reader));
+		System.out.println("new ProtocolPacket");
+                //System.out.println(user.getInetAddress().getHostAddress() + ": " + s);
             }
         } catch (IOException ex) {
         }
