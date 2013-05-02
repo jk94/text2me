@@ -16,7 +16,6 @@ public class Operations {
                 break;
             case ProtocolHelper.TYPE_READ:
                 Setter_Operations.setMessageStatusByEmpfaenger(dbc, Integer.parseInt(pp.getMessage_type()), Konstanten.STATUS_GELESEN_ID);
-                
                 break;
             case ProtocolHelper.TYPE_DELIVER:
                 break;
