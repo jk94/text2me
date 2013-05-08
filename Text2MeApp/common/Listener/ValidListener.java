@@ -12,11 +12,25 @@ import de.jkdh.text2me_server.main.operations.Operations;
  *
  * @author Admin
  */
-public class ValidListener {
+public class ValidListener extends Thread {
+
+    private DB_Connect dbc;
+    private ProtocolPacket pp;
 
     public ValidListener(DB_Connect dbc, ProtocolPacket pp) {
-        while (!pp.isValid()) {
-            Operations.runOperationSequenz(dbc, pp);
+        this.dbc = dbc;
+        this.pp = pp;
+        run();
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (!this.pp.isValid()) {
+                Operations.runOperationSequenz(this.dbc, this.pp);
+            }
+
+        } catch (Exception ex) {
         }
     }
 }

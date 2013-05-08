@@ -14,9 +14,8 @@ import java.sql.Timestamp;
  * @author Jan
  */
 public class Setter_Operations {
-    
-    
-       public static int setMessageStatus(DB_Connect dbc, int id, int neuerStatus) {
+
+    public static int setMessageStatus(DB_Connect dbc, int id, int neuerStatus) {
         PreparedStatement stmt = null;
         try {
             stmt = dbc.getTheConnection().prepareStatement("UPDATE message SET Status = ? WHERE M_ID = ?");
@@ -27,6 +26,28 @@ public class Setter_Operations {
         return dbc.executeSQLInsert(stmt);
     }
 
+    public static int setMessageStatusByEmpfaenger(DB_Connect dbc, int empfaengerID, int neuerStatus) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("UPDATE message SET Status = ? WHERE Empfaenger_ID = ?");
+            stmt.setInt(1, neuerStatus);
+            stmt.setInt(2, empfaengerID);
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt);
+    }
+
+    public static int setMessageStatusBySender(DB_Connect dbc, int senderID, int neuerStatus) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = dbc.getTheConnection().prepareStatement("UPDATE message SET Status = ? WHERE Sender_ID = ?");
+            stmt.setInt(1, neuerStatus);
+            stmt.setInt(2, senderID);
+        } catch (SQLException ex) {
+        }
+        return dbc.executeSQLInsert(stmt);
+    }
+    
     public static int updateLastOnline(DB_Connect dbc, int userID) {
         PreparedStatement stmt = null;
         try {
@@ -38,7 +59,4 @@ public class Setter_Operations {
         }
         return dbc.executeSQLInsert(stmt);
     }
-    
-    
-    
 }

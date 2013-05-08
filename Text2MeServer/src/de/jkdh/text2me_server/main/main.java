@@ -5,7 +5,7 @@ import javax.management.timer.Timer;
 import de.jkdh.text2me_server.main.connection.ConnectionServer;
 import de.jkdh.text2me_server.main.connection.DB_Connect;
 
-class main {
+public class main {
 
 	private Timer ttimer = new Timer();
 	private static Control theControl;	
@@ -15,6 +15,9 @@ class main {
 		
 	}
 
+        public static Control getControl(){
+            return theControl;
+        }
 	public void startTimer() {
 
 	}
