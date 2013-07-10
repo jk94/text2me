@@ -1,3 +1,4 @@
 Text2MeApp/bin/*
 Text2MeApp/gen/*
 Text2MeServer/Text2Me_Server/build/*
+Text2MeServer/Text2Me_Server/nbproject/private/*

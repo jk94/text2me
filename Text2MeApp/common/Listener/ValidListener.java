@@ -5,8 +5,7 @@
 package Listener;
 
 import de.jkdh.common.ProtocolPacket;
-import de.jkdh.text2me_server.main.connection.DB_Connect;
-import de.jkdh.text2me_server.main.operations.Operations;
+import de.jkdh.text2me.connections.DB_Connect;
 
 /**
  *
@@ -27,7 +26,7 @@ public class ValidListener extends Thread {
     public void run() {
         try {
             while (!this.pp.isValid()) {
-                Operations.runOperationSequenz(this.dbc, this.pp);
+                //Operations.runOperationSequenz(this.dbc, this.pp);
             }
 
         } catch (Exception ex) {
