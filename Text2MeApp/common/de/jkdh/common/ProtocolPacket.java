@@ -62,16 +62,14 @@ public class ProtocolPacket {
 			}
 
 		} catch (Exception e) {
-			// <<<<<<< HEAD
 			e.printStackTrace();
 			try {
 				socket.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			// =======
 			e.printStackTrace();
-			// >>>>>>> 6b6b3be6e9d584c2c3d2bf4ae7b3b6f92dd7d470
+
 		}
 	}
 
