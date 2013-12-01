@@ -5,7 +5,7 @@
 package de.jkdh.text2me_server.Listener;
 
 import de.jkdh.common.ProtocolPacket;
-import de.jkdh.text2me_server.main.connection.DB_Connect;
+import de.jkdh.text2me.connections.DB_Connect;
 
 /**
  *
