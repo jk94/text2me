@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Listener;
+package de.jkdh.text2me_server.main;
 
 import de.jkdh.common.ProtocolPacket;
-import de.jkdh.text2me.connections.DB_Connect;
+import de.jkdh.text2me_server.main.connection.DB_Connect;
 
 /**
  *

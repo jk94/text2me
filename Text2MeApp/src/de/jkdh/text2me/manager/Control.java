@@ -32,7 +32,7 @@ public class Control {
 		contacts = database.getContacts();
 		conversations = database.getConversations(this);
 
-		connection = new Connection("text2me", 2729);
+		connection = new Connection("text2me", 1234);
 
 	}
 
